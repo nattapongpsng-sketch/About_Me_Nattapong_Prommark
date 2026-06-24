@@ -8,11 +8,24 @@
       body {
         background-color:white;
       }
-      h1, h2, h3 {
+      h1, h2 {
         color:violet;
       }
       img {
         display: block;
+      }
+      .profile {
+        display: grid;
+        grid-template-columns: 160px auto;
+        align-items: left;
+        gap: 20px;
+      }
+      .career-skills {
+        display: grid;
+        grid-template-columns: 50% auto;
+        gap: 20px;
+        border-top: 1px solid goldenrod;
+        border-bottom: 1px solid goldenrod;
       }
     </style>
 
@@ -21,9 +34,9 @@
    <main>
 
      <!-- ส่วนที่ 1. -->
-     <section>
+     <section class="profile">
       <div>
-        <img src="Nattapong_Prommark.png" width="120" height="160">
+        <img src="Nattapong_Prommark.png" width="160" height="auto" alt="นายนัฐพงศ์ พรหมมาก">
       </div>
       <div>
         <h1>นายนัฐพงศ์ พรหมมาก</h1>
@@ -38,11 +51,11 @@
      </section>
 
      <!-- ส่วนที่ 2. -->
-     <section>
+     <section class="career-skills">
       <div>
         <h2>ประวัติการทำงานที่ผ่านมา</h2>
         <ul>
-          <li><b>2568 ผู้ช่วยหัวหน้าแผนก ผปร.กฟส.พระแสง</b></li>
+          <li>2568 ผู้ช่วยหัวหน้าแผนก ผปร.กฟส.พระแสง</li>
           <li>2565 วิศวกรระดับ 6 ผกป.กฟส.อ.พระแสง</li>
           <li>2562 วิศวกรระดับ 5 ผกป.กฟส.อ.พระแสง</li>
           <li>2559 วิศวกรระดับ 4 ผกป.กฟส.อ.พระแสง</li>
@@ -98,7 +111,7 @@
      </section>
 
      <!-- ส่วนที่ 4. -->
-     <section>
+     <section class="career-skills">
       <div>
         <h2>ทักษะ และความสนใจ</h2>
         <ul>
