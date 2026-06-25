@@ -31,6 +31,16 @@
       .para-text {
         text-indent: 2em;
       }
+      button {
+       background-color:white;
+       border: 1px solid violet;
+       color: violet;
+       padding: 15px 32px;
+       text-align: center;
+       font-size: 16px;
+       margin: 4px 2px;
+       cursor: pointer;
+      }
     </style>
 </head>
 <body>
@@ -136,17 +146,24 @@
 
     <!-- ส่วนที่ 5. (เพิ่มเติม)-->
     <section clalss="career-skills">
-      <h2>คลิกปุ่มด้านล่างเพื่อทักทายผม</h2>
-      <p id="greeting"></p>
-      <button onclick="mybutton()">ทักทาย</button> <br>
-      <button onclick = "myfunction()">ปรับพื้นหลัง</button><br>
-      <button onclick = "mycount()">คลิกเพื่อนับ</button><br>
-      <p id="count">0</p>
+      <h2>ส่วนเสริม</h2>
+      <div class = "career-skills">
+      <button onclick = "mybutton()">คลิกทักทาย</button>
+      <p id="greeting">-</p>
+      </div>
+      <div class = "career-skills">
+      <button onclick = "myfunction()">ปรับพื้นหลัง</button>
+      <p id="mode">โหมดพื้นหลังสีขาว</p>
+      </div>
+      <div class = "career-skills">
+      <button onclick = "mycount()">คลิกเพื่อนับ</button>
+      <p id="count" style="font-size: 16px;">0</p>
+      </div>
      </section>
      <section>
-      <div>
-        <p id = "weather">- °C</p>
+      <div class = "career-skills">
         <button id = "gettemp">อุณหภูมิ PEA พระแสง</button>
+        <p id = "weather" style="font-size: 16px;">- °C</p>
       </div>
     </section>
   </main>   
@@ -161,9 +178,11 @@ function myfunction() {
   if (document.body.style.backgroundColor === "black") {
     document.body.style.backgroundColor = "white";
     document.body.style.color = "black";
+    document.getElementById("mode").innerHTML = "โหมดพื้นหลังสีขาว";
   } else {
   document.body.style.backgroundColor = "black";
   document.body.style.color = "white";
+  document.getElementById("mode").innerHTML = "โหมดพื้นหลังสีดำ";
 }
 }
 //ฟังก์ชันสำหรับปุ่มนับจำนวนการคลิก
@@ -177,6 +196,7 @@ const url = "https://api.open-meteo.com/v1/forecast?latitude=8.570949372392178&l
 document.getElementById("gettemp").addEventListener("click", fetchData);
 //ฟังก์ชันสำหรับดึงข้อมูลอุณหภูมิจาก API
 async function fetchData() {
+    document.getElementById("weather").innerHTML = "กำลังโหลด..."
   try {
     const response = await fetch(url);
     const data = await response.json();
