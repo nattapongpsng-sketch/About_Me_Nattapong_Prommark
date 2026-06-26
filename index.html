@@ -4,48 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Me Nattapong Prommark</title>
-    <style>
-      body {
-        background-color:white;
-        color:black;
-      }
-      h1, h2 {
-        color:violet;
-      }
-      img {
-        display: block;
-      }
-      .profile {
-        display: grid;
-        grid-template-columns: 160px auto;
-        align-items: left;
-        gap: 20px;
-      }
-      .career-skills {
-        display: grid;
-        grid-template-columns: 50% auto;
-        gap: 20px;
-        border-top: 1px solid goldenrod;
-        border-bottom: 1px solid goldenrod;
-      }
-      .para-text {
-        text-indent: 2em;
-      }
-      button {
-       background-color:white;
-       border: 1px solid violet;
-       color: violet;
-       padding: 15px 32px;
-       text-align: center;
-       font-size: 16px;
-       margin: 4px 2px;
-       cursor: pointer;
-      }
-    </style>
+    <link rel="stylesheet" href="style.css">
+    <script src="javascript.js" defer></script> 
 </head>
 <body>
   <main>
-
+    <div class = container>
      <!-- ส่วนที่ 1. -->
     <section class="profile">
       <div>
@@ -89,7 +53,7 @@
     <section>
       <h2>เหตุผลที่อยากเข้า DevPool</h2>
       <dev>
-        <P class="para-text">ผมมีความมุ่งมั่นส่งมอบพลังงานไฟฟ้าที่มีคุณภาพตามมาตรฐานให้กับลูกค้า โดยผสานความรู้ด้านวิศวกรรมเข้ากับ
+        <P class="para-text">ผมมีความมุ่งมั่นส่งในการมอบพลังงานไฟฟ้าที่มีคุณภาพตามมาตรฐานให้กับลูกค้า โดยผสานความรู้ด้านวิศวกรรมเข้ากับ
           เทคโนโลยีสารสนเทศภูมิศาสตร์ (GIS) เพื่อพัฒนาระบบจำหน่ายไฟฟ้าและกระบวนการทำงานอย่างต่อเนื่อง </p>
         <P class="para-text">
           ตลอดระยะเวลาที่ปฏิบัติงาน ผมพบว่าหลายปัญหาในงานวิศวกรรมสามารถแก้ไขได้ด้วยซอฟต์แวร์
@@ -145,67 +109,33 @@
     </section>
 
     <!-- ส่วนที่ 5. (เพิ่มเติม)-->
-    <section clalss="career-skills">
-      <h2>ส่วนเสริม</h2>
+    
+     <section>
+      <h2 id="additional-section" type="button" onclick="toggleSection()">ส่วนเสริม</h2>
+      <div class="hidesection">
       <div class = "career-skills">
       <button onclick = "mybutton()">คลิกทักทาย</button>
       <p id="greeting">-</p>
       </div>
+
       <div class = "career-skills">
       <button onclick = "myfunction()">ปรับพื้นหลัง</button>
       <p id="mode">โหมดพื้นหลังสีขาว</p>
       </div>
+
       <div class = "career-skills">
       <button onclick = "mycount()">คลิกเพื่อนับ</button>
       <p id="count" style="font-size: 16px;">0</p>
       </div>
-     </section>
-     <section>
+     
+
       <div class = "career-skills">
-        <button id = "gettemp">อุณหภูมิ PEA พระแสง</button>
-        <p id = "weather" style="font-size: 16px;">- °C</p>
+        <button id = "gettemp">สภาพอากาศปัจจุบัน PEA พระแสง</button>
+        <p id = "weather" style="font-size: 16px;">-</p>
+      </div>
       </div>
     </section>
-  </main>   
+  </main>  
 </body>
-<script>
-//ฟังก์ชันสำหรับปุ่มทักทาย
-function mybutton() {
-  document.getElementById("greeting").innerHTML = "Hello, I'm Nattapong Prommark";
-}
-//ฟังก
-function myfunction() {
-  if (document.body.style.backgroundColor === "black") {
-    document.body.style.backgroundColor = "white";
-    document.body.style.color = "black";
-    document.getElementById("mode").innerHTML = "โหมดพื้นหลังสีขาว";
-  } else {
-  document.body.style.backgroundColor = "black";
-  document.body.style.color = "white";
-  document.getElementById("mode").innerHTML = "โหมดพื้นหลังสีดำ";
-}
-}
-//ฟังก์ชันสำหรับปุ่มนับจำนวนการคลิก
-function mycount() {
-  let count = parseInt(document.getElementById("count").innerHTML) || 0;
-    count++;
-  document.getElementById("count").innerHTML = count;
-}
 
-const url = "https://api.open-meteo.com/v1/forecast?latitude=8.570949372392178&longitude=99.2511614163022&hourly=temperature_2m&timezone=Asia%2FBangkok"
-document.getElementById("gettemp").addEventListener("click", fetchData);
-//ฟังก์ชันสำหรับดึงข้อมูลอุณหภูมิจาก API
-async function fetchData() {
-    document.getElementById("weather").innerHTML = "กำลังโหลด..."
-  try {
-    const response = await fetch(url);
-    const data = await response.json();
-    console.log(data);
-    document.getElementById("weather").innerHTML = data.hourly.temperature_2m[0] + " °C";
-  } catch (error) {
-    console.error("Error fetching data:", error);
-    document.getElementById("weather").innerHTML = "Error fetching data";
-  }
-};
-</script>
 </html>
