@@ -44,3 +44,16 @@ function toggleSection() {
     document.querySelector('.hidesection').style.display = "block";
   }
 }
+document.getElementById("additional-section").addEventListener("mouseover", toggleSection2);
+function toggleSection2() {
+  if (document.querySelector('#additional-section').style.color == "goldenrod") {
+    document.querySelector('#additional-section').style.color = "violet";
+  } else {
+    document.querySelector('#additional-section').style.color = "goldenrod";
+  }
+}
+document.getElementById("feeling").addEventListener("input", function() {
+  const feeling1 = document.getElementById("feeling").value;
+  console.log(feeling1);
+  document.getElementById("meaning").textContent = "คุณรู้สึกว่า: " + feeling1;
+})
