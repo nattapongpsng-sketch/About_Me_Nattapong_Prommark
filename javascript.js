@@ -22,21 +22,6 @@ function mycount() {
   document.getElementById("count").textContent = count;
 }
 
-const url = "https://api.open-meteo.com/v1/forecast?latitude=8.570949372392178&longitude=99.2511614163022&current=temperature_2m,is_day,rain,cloud_cover,weather_code,wind_speed_10m,wind_direction_10m&timezone=Asia%2FBangkok&forecast_days=1"
-document.getElementById("gettemp").addEventListener("click", fetchData);
-//ฟังก์ชันสำหรับดึงข้อมูลอุณหภูมิจาก API
-async function fetchData() {
-    document.getElementById("weather").innerHTML = "<b style='color: red;'>กำลังโหลด...</b>";
-  try {
-    const response = await fetch(url);
-    const data = await response.json();
-    console.log(data);
-    document.getElementById("weather").textContent = "วัน-เวลา " + data.current.time + " น."+" | " + "อุณหภูมิ: " + data.current.temperature_2m + " °C" + " | " + "ความเร็วลม: " + data.current.wind_speed_10m + " m/s" + " | " + "ปริมาณฝน: " + data.current.rain + " mm";
-  } catch (error) {
-    console.error("Error fetching data:", error);
-    document.getElementById("weather").textContent = "Error fetching data";
-  }
-}
 function toggleSection() {
   if (document.querySelector('.hidesection').style.display == "block") {
     document.querySelector('.hidesection').style.display = "none";
