@@ -24,10 +24,11 @@ async function fetchCatImage() {
         const data = await response.json();
         console.log(data);
         document.getElementById("cat-image").src = data[0].url;
+        document.getElementById("cat-image").style.display = "block";
         document.getElementById("cat-text").innerHTML = "<b style='color: red;'>-</b>";
     } catch (error) {
         console.error("Error fetching cat image:", error);
-        document.getElementById("cat-image").src = "Error loading cat image";
-        document.getElementById("cat-text").innerHTML = "<b style='color: red;'>-</b>";
+        document.getElementById("cat-image").style.display = "none";
+        document.getElementById("cat-text").innerHTML = "<b style='color: red;'>Error loading cat image</b>";
     }
 }    
